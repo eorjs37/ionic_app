@@ -73,11 +73,13 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "app:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "app:build:production"
+              "browserTarget": "app:build:production",
+              "proxyConfig": "proxy.conf.json"
             },
             "ci": {
               "progress": false
@@ -158,7 +160,8 @@
           "builder": "@ionic/angular-toolkit:cordova-serve",
           "options": {
             "cordovaBuildTarget": "app:ionic-cordova-build",
-            "devServerTarget": "app:serve"
+            "devServerTarget": "app:serve",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
