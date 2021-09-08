@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>로그인</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-grid fixed>
+   <ion-row>
+     <ion-col size="12">
+      <ion-item>
+        <ion-label>ID</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+     </ion-col>
+   </ion-row>
+   <ion-row>
+    <ion-col size="12">
+      <ion-item>
+        <ion-label>PW</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>  
+    <ion-col>
+      <ion-button (click)="login()">로그인</ion-button>
+    </ion-col>
+  </ion-row>
+ </ion-grid>
+</ion-content>
