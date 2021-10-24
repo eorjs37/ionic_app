@@ -5,7 +5,7 @@ import { IonicUser } from './IonicUser';
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = 'https://biggunsite.co.kr';
+  baseUrl:string = 'https://biggunsite.co.kr';
   constructor(private http: HttpClient) { }
   getUserAll() {
     return this.http.get<IonicUser>(`${this.baseUrl}/api/ionic/user/all`);
