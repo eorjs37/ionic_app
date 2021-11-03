@@ -12,11 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },File,Media,AndroidPermissions,HTTP,SplashScreen, StatusBar, Deeplinks],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },File,Media,AndroidPermissions,HTTP,SplashScreen, StatusBar, Deeplinks,SpeechRecognition],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
