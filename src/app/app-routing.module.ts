@@ -22,6 +22,18 @@ const routes: Routes = [
   {
     path: 'slider',
     loadChildren: () => import('./slider/slider.module').then( m => m.SliderPageModule)
+  },
+  {
+    path: 'speech',
+    loadChildren: () => import('./speech/speech.module').then( m => m.SpeechPageModule)
+  },
+  {
+    path: 'speed-reading',
+    loadChildren: () => import('./speed-reading/speed-reading.module').then( m => m.SpeedReadingPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
   }
 ];
 
