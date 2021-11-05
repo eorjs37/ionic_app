@@ -23,7 +23,7 @@
     "@ionic-native/android-permissions": "^5.35.0",
     "@ionic-native/core": "^5.35.0",
     "@ionic-native/deeplinks": "^5.36.0",
-    "@ionic-native/file": "^5.35.0",
+    "@ionic-native/file": "^5.36.0",
     "@ionic-native/http": "^5.36.0",
     "@ionic-native/ionic-webview": "^5.36.0",
     "@ionic-native/keyboard": "^5.36.0",
@@ -107,7 +107,8 @@
         "DEEPLINK_5_HOST": " "
       },
       "cordova-plugin-media": {},
-      "cordova-plugin-speechrecognition": {}
+      "cordova-plugin-speechrecognition": {},
+      "cordova-plugin-file": {}
     },
     "platforms": [
       "android"
