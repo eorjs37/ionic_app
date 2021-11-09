@@ -13,11 +13,15 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+import { MediaCapture } from '@ionic-native/media-capture/ngx';
+import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },File,Media,AndroidPermissions,HTTP,SplashScreen, StatusBar, Deeplinks,SpeechRecognition],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, File, Media, AndroidPermissions, HTTP, SplashScreen, StatusBar, Deeplinks, SpeechRecognition, MediaCapture, ImagePicker
+             , StreamingMedia],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
