@@ -26,7 +26,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.platform.ready().then(() => {
-      let path = this.file.applicationStorageDirectory;
+      let path = this.file.dataDirectory;
       this.file.checkDir(path, MEDIA_FOLDER_NAME).then(() => {
         console.log(MEDIA_FOLDER_NAME+' Directory exists');
         this.loadFiles();
@@ -158,7 +158,7 @@ export class HomePage implements OnInit {
 
     this.file.copyFile(copyFrom, name, copyTo, newName).then(() => {
       this.loadFiles();
-    }, err => console.log('error : ' , err))
+    }, err => console.log('copyFileToLocalDir error : ' , err))
     
   }
 }
