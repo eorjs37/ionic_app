@@ -23,16 +23,16 @@ import { messagesReducer } from './store/messages/messages.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
-if (!window['devToolsExtension'] && !window['__REDUX_DEVTOOLS_EXTENSION__']) {
-  let remoteDevToolsProxy = new RemoteDevToolsProxy({
-    connectTimeout: 300000, // extend for pauses during debugging
-    ackTimeout: 120000, // extend for pauses during debugging
-    secure: false // dev only
-  });
+// if (!window['devToolsExtension'] && !window['__REDUX_DEVTOOLS_EXTENSION__']) {
+//   let remoteDevToolsProxy = new RemoteDevToolsProxy({
+//     connectTimeout: 300000, // extend for pauses during debugging
+//     ackTimeout: 120000, // extend for pauses during debugging
+//     secure: false // dev only
+//   });
 
-  window['devToolsExtension'] = remoteDevToolsProxy;
-  window['__REDUX_DEVTOOLS_EXTENSION__'] = remoteDevToolsProxy;
-}
+//   window['devToolsExtension'] = remoteDevToolsProxy;
+//   window['__REDUX_DEVTOOLS_EXTENSION__'] = remoteDevToolsProxy;
+// }
 
 @NgModule({
   declarations: [AppComponent],
