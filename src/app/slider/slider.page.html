@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Slider1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #ionContent>
+  <ion-slides  pager="true" [options]="slideOpts"  #slideWithNav (ionSlideWillChange)="slideChanged()">
+    <ion-slide>
+      <app-slider1 [stopYn]="stopSliderMusic" class="app-slider1"></app-slider1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 2</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 3</h1>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -1,0 +1,5 @@
+[{
+"relation": ["delegate_permission/common.handle_all_urls"],
+"target" : { "namespace": "android_app", "package_name": "com.maxgun.app",
+                "sha256_cert_fingerprints": ["0D:C8:E5:8C:6A:0A:C7:80:F5:61:FD:25:D5:23:70:04:37:AD:FD:FC:61:BC:D4:74:D2:63:AE:3A:B0:80:FA:A7"] }
+}]

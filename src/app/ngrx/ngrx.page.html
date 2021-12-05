@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ngrx</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-list *ngIf="visible"  [items]="ngrxs$ | async" [test]="child" (parentAdd)="childAdd($event)"></app-list>
+  <ion-button (click)="show()">
+    Default
+  </ion-button>
+  <ion-button (click)="childPlus()">
+    +
+  </ion-button>
+</ion-content>
