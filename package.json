@@ -20,6 +20,11 @@
     "@angular/platform-browser": "~12.1.1",
     "@angular/platform-browser-dynamic": "~12.1.1",
     "@angular/router": "~12.1.1",
+    "@awesome-cordova-plugins/core": "^5.37.1",
+    "@awesome-cordova-plugins/file": "^5.37.2",
+    "@awesome-cordova-plugins/media": "^5.37.2",
+    "@awesome-cordova-plugins/media-capture": "^5.37.2",
+    "@awesome-cordova-plugins/speech-recognition": "^5.37.1",
     "@ionic-native/android-permissions": "^5.35.0",
     "@ionic-native/core": "^5.35.0",
     "@ionic-native/deeplinks": "^5.36.0",
@@ -36,8 +41,10 @@
     "@ionic-native/status-bar": "^5.36.0",
     "@ionic-native/streaming-media": "^5.36.0",
     "@ionic/angular": "^5.5.2",
+    "@ngrx/schematics": "^13.0.2",
     "@ngrx/store": "^12.5.1",
     "@ngrx/store-devtools": "^12.5.1",
+    "cordova": "^11.0.0",
     "cordova-plugin-whitelist": "^1.3.5",
     "howler": "^2.2.3",
     "rxjs": "~6.6.0",
@@ -55,7 +62,6 @@
     "@angular/compiler-cli": "~12.1.1",
     "@angular/language-service": "~12.0.1",
     "@ionic/angular-toolkit": "^4.0.0",
-    "@ngrx/schematics": "^12.5.1",
     "@types/dom-mediacapture-record": "^1.0.10",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
@@ -63,9 +69,8 @@
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
     "com-sarriaroman-photoviewer": "^1.2.5",
-    "cordova-android": "^9.1.0",
-    "cordova-android-support-gradle-release": "^3.0.1",
-    "cordova-plugin-file": "git+https://github.com/breautek/cordova-plugin-file.git#feat/api30",
+    "cordova-android": "^10.1.1",
+    "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^5.0.0",
     "cordova-plugin-media": "^5.0.3",
@@ -74,7 +79,6 @@
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-streaming-media": "^2.3.0",
-    "cordova-plugin-telerik-imagepicker": "^2.3.6",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsdoc": "30.7.6",
@@ -122,14 +126,11 @@
         "DEEPLINK_5_HOST": " "
       },
       "cordova-plugin-media": {},
-      "cordova-plugin-speechrecognition": {},
-      "cordova-plugin-file": {},
       "cordova-plugin-media-capture": {},
       "cordova-plugin-streaming-media": {},
       "com-sarriaroman-photoviewer": {},
-      "cordova-android-support-gradle-release": {
-        "ANDROID_SUPPORT_VERSION": "27.+"
-      }
+      "cordova-plugin-speechrecognition": {},
+      "cordova-plugin-file": {}
     },
     "platforms": [
       "android"

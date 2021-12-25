@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'ngrx',
     loadChildren: () => import('./ngrx/ngrx.module').then( m => m.NgrxPageModule)
+  },
+  {
+    path: 'music',
+    loadChildren: () => import('./music/music.module').then( m => m.MusicPageModule)
   }
 ];
 

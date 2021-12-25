@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+import { SpeechRecognition } from '@awesome-cordova-plugins/speech-recognition/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

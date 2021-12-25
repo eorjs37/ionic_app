@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>music</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Music</ion-label>
+    </ion-list-header>
+
+    <ion-progress-bar color="secondary" [value]="percent/100"></ion-progress-bar>
+  </ion-list>
+
+  <section *ngIf="!status">
+    <ion-button (click)="startRecord()">녹음시작</ion-button>
+  </section>
+
+  <section *ngIf="status">
+    <ion-button (click)="stopRecord()">녹음중지</ion-button>
+  </section>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of files">
+      <ion-item (click)="deleteFile(item)">
+        <ion-label>
+          {{ item.name }}
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

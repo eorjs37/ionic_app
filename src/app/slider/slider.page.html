@@ -1,13 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Slider1</ion-title>
+  <ion-toolbar [color]="(recordingState$ | async) ? 'danger' : 'primary'">
+    <ion-title>SLIDER{{ sliderNumber+1 }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content #ionContent>
   <ion-slides  pager="true" [options]="slideOpts"  #slideWithNav (ionSlideWillChange)="slideChanged()">
     <ion-slide>
-      <app-slider1 [stopYn]="stopSliderMusic" class="app-slider1"></app-slider1>
+      <app-slider1 class="app-slider1" 
+                  [stopYn]="stopSliderMusic"  
+                  (onChangeDetectEvent)="changeDetect()">
+      </app-slider1>
     </ion-slide>
     <ion-slide>
       <h1>Slide 2</h1>
