@@ -2,11 +2,13 @@ import { createReducer, on } from '@ngrx/store';
 import * as SliderActions from './slider.actions';
 
 export interface SliderState{
-    recordingState: Boolean
+    recordingState: Boolean,
+    mySpeak: Array<string>
 }
 
 export const initialState: SliderState = {
-    recordingState: false
+    recordingState: false,
+    mySpeak:[]
 }
 
 export const sliderReducer = createReducer(
@@ -14,5 +16,9 @@ export const sliderReducer = createReducer(
     on(SliderActions.recordingState, (state, { recordingState }) => ({
         ...state,
         recordingState: recordingState
+    })),
+    on(SliderActions.addMySpeakState, (state, { matche }) => ({
+        ...state,
+        mySpeak: [...state.mySpeak, matche]
     }))
 )
