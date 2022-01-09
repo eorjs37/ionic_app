@@ -2,8 +2,8 @@ import { Component,  EventEmitter,  Input,  OnInit, Output, SimpleChanges } from
 import { Howl } from 'howler';
 import { Store } from '@ngrx/store';
 import { recordingState } from '../../state/slider.actions';
-import { SpeechRecognition } from '@awesome-cordova-plugins/speech-recognition/ngx';
 import { timer } from 'rxjs';
+import { SpeechService } from 'src/app/service/speech.service';
 @Component({
   selector: 'app-slider1',
   templateUrl: './slider1.component.html',
@@ -21,22 +21,14 @@ export class Slider1Component implements OnInit {
   timerObject: any;
   mySpeak: Array<string> = [];
   constructor(private store: Store,
-              private speechRecognition: SpeechRecognition) { }
+              private speechService: SpeechService) { }
 
   ngOnInit(): void {
-    this.speechRecognition.isRecognitionAvailable().then((available: boolean) => {
-      this.speechRecognition.requestPermission()
-        .then(
-          () => console.log('Granted'),
-          () => console.log('Denied')
-        )
-    })
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.stopYn.currentValue === false) {
-      //this.howl.stop();
-      this.speechRecognition.stopListening();
+      this.speechService.stopSpeech();
       this.store.dispatch(recordingState({ recordingState: false }));
       this.onChangeDetectEvent.emit();
       if (this.timerObject) {
@@ -47,19 +39,18 @@ export class Slider1Component implements OnInit {
     }
   }
 
-  startStt() {
-    this.store.dispatch(recordingState({ recordingState: true }));
-    this.speechRecognition.startListening(this.options).subscribe(
-      (matches) => {
-        this.mySpeak.push(matches[0]);
-        this.keepRecording();
-      },
-      (error) => {
-        console.error(`stt ${error}`);
-        this.mySpeak.push('');
-        this.keepRecording();
-      }
-    )
+  startSpeech() {
+    this.speechService.startSpeech(this.options)
+      .subscribe(
+        (matches) => {
+          this.mySpeak.push(matches[0]);
+          this.keepRecording();
+        },
+        (error) => {
+          console.error(`startSpeech ${error}`);
+          this.mySpeak.push('');
+          this.keepRecording();
+        });
   }
 
 
@@ -68,7 +59,7 @@ export class Slider1Component implements OnInit {
       this.stopStt();
       this.timerObject.unsubscribe();
     } else {
-      this.startStt();
+      this.startSpeech();
     }
   }
 
@@ -100,22 +91,11 @@ export class Slider1Component implements OnInit {
 
   startTimer() {
     this.mySpeak = [];
+    this.store.dispatch(recordingState({ recordingState: true }));
     const source = timer(/* 시작 초*/0, /* 초 간격 */1000);
     this.timerObject = source.subscribe(val => {
       this.milSecond = val;
     });
-    this.startStt();
-  }
-
-  ionViewDidEnter() {
-    console.log('slider1 ionViewDidEnter');
-  }
-
-  ionViewWillLeave() {
-    console.log('slider1 ionViewWillLeave');
-  }
-
-  ionViewDidLeave() {
-    console.log('slider1 ionViewDidLeave');
+    this.startSpeech();
   }
 }
