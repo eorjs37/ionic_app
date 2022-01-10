@@ -13,6 +13,7 @@ export class SliderPage implements OnInit {
   @ViewChild(IonContent) ionContent: IonContent;
   pager: boolean;
   stopSliderMusic: boolean | true;
+  test: number = 10;
   slideOpts = {
     initialSlide: 0,
     speed: 200,
