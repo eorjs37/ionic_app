@@ -1,21 +1,19 @@
 <div class="scroll">
-    <ion-grid *ngIf="( $speech | async ) as sp">
-        <ion-row>
-            <ion-col>
-                <ion-text color="secondary">
-                    <h1>{{ sp?.count | timerExpression }}</h1>
-                </ion-text>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col >
-                {{ sp?.speech }}
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <section>
+        <h1>{{ $timer | async | timerExpression}}</h1>
+    </section>
+
+    <section>
+        {{ ($speech | async ) }}
+    </section>
+
+    <section>
+        <!-- <ion-button (click)="onStartTimer()">타이머시작</ion-button> -->
+        <!-- <ion-button (click)="onStopTimer()">타이머종료</ion-button> -->
+    </section>
 
     <section>
         <ion-button (click)="onStartSpeech()">녹음시작</ion-button>
-        <ion-button (click)="onStopTimer()">녹음종료</ion-button>
+        <ion-button>녹음종료</ion-button>
     </section>
 </div>

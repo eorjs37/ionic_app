@@ -1,10 +1,10 @@
-import { Component,  EventEmitter,  Input,  OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component,  EventEmitter,  Input,  OnInit, Output, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { Howl } from 'howler';
 import { Store } from '@ngrx/store';
 import { recordingState } from '../../state/slider.actions';
 import { SpeechService } from 'src/app/service/speech.service';
-import { TimerService } from 'src/app/service/timer.service';
 import { Observable } from 'rxjs';
+import { SpeechResult } from 'src/app/interface/speechResult';
 @Component({
   selector: 'app-slider1',
   templateUrl: './slider1.component.html',
@@ -21,11 +21,12 @@ export class Slider1Component implements OnInit {
   milSecond: number = 0;
   timerObject: any;
   mySpeak: Array<string> = [];
-  $speech: Observable<any>;
+  $speech: Observable<SpeechResult>;
+  $timer: Observable<number>;
 
   constructor(private store: Store,
-              private speechService: SpeechService,
-              private timerService: TimerService) { }
+    private speechService: SpeechService,
+  private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
@@ -44,11 +45,11 @@ export class Slider1Component implements OnInit {
    * @description : 
    */
   onStartTimer() {
-    //this.$timer = this.timerService.startTimer();
     
   }
 
   onStartSpeech() {
+    // this.$timer = this.speechService.startTimer();
     this.$speech = this.speechService.startSpeech();
   }
 
@@ -56,7 +57,6 @@ export class Slider1Component implements OnInit {
    * @description : stopTimer
    */
   onStopTimer() {
-    this.speechService.stopSpeech();
-    //this.timerService.stopTimer();
+    this.speechService.stopTimer();
   }
 }
