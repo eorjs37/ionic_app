@@ -24,7 +24,8 @@ export class SliderPage implements OnInit {
   };
   sliderNumber: number = 0;
   recordingState$ = this.store.select(selectRecording);
-  constructor(private cd: ChangeDetectorRef, private store: Store) {
+  constructor(private cd: ChangeDetectorRef,
+              private store: Store) {
   }
 
   ngOnInit() {
