@@ -2,14 +2,23 @@ import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SpeechRecognition } from '@awesome-cordova-plugins/speech-recognition/ngx';
 import { AlertService } from './alert.service';
-import { merge, of, Subject, timer } from 'rxjs';
-import { catchError, delay, delayWhen, map, retry, retryWhen, tap} from 'rxjs/operators';
+import { interval, merge,  Observable,  of,  Subject, timer } from 'rxjs';
+import { catchError, takeUntil, tap, startWith, retryWhen, delay, map, delayWhen, finalize, take } from 'rxjs/operators';
+import { SpeechResult } from '../interface/speechResult';
+
 @Injectable({
   providedIn: 'root'
 })
 export class SpeechService {
   private $stopSubect = new Subject();
   public sentence: string = '';
+  private errorCount: number = 0;
+  private  config = {
+    'language': 'en-US',
+    'showPopup': false,
+    'showPartial': true
+  }
+  private counting: number = 0;
   constructor(private speechRecognition: SpeechRecognition,
     public platform: Platform,
     private alertService: AlertService) {
@@ -51,63 +60,83 @@ export class SpeechService {
     navigator['app'].exitApp();
   }
 
-  speechRec() {
-    return this.speechRecognition.startListening({
-      'language': 'en-US',
-      'showPopup': false,
-      'showPartial': true
-    })
-  }
-
-  startSpeech() {
-    let startMil = 0;
-    const timer1 = timer(startMil, 1000);
-
-    this.sentence = '';
-
-    const speechrecognition = merge(timer1, this.speechRec())
+  startTimer() : Observable<number>{
+    return timer(0, 1000)
       .pipe(
-        map(x => {
-            startMil = typeof x === 'number' ? x : startMil;
-            return {
-              speech: typeof x === "object" ? this.combineStr(x) : this.sentence,
-              count: typeof x === 'number'? x : 0 
-            }
-          }),
-          tap(val => console.log('val1 : ', val)),
-          catchError(err => {
-            console.error('catchError : ', err);
-            console.log('startMil : ', startMil);
-            
-            return of([]) 
-          }),
-          retry(1)
-         
-          // retryWhen(errors =>
-          //   errors.pipe(
-          //     delayWhen(_ => this.speechRec())
-          //   )
-          // )
-      );
-
-    return speechrecognition;
+        tap(count => {
+          console.log(`counting : `, count);
+          this.counting = count;
+        }),
+        takeUntil(this.$stopSubect)
+    )
   }
 
- 
-
-  stopSpeech() {
+  stopTimer() {
     this.$stopSubect.next(true);
   }
 
   /**
-   * @description : 문장합치기
+   * 
    */
-  private combineStr(arrayString: Array<string>) {
-    if (arrayString.length < 2) {
-      if (arrayString[0] !== '') {
-        this.sentence += arrayString[0];
-      }
-    }
-    return this.sentence;
+  startSpeech(): Observable<SpeechResult>{
+    this.errorCount = 0;
+    return this.speech().pipe(
+      startWith(this.startTimer().subscribe()),
+      map(x => x[0]),
+      retryWhen(errors =>
+        errors.pipe(
+          tap((error) => {
+            console.log('error : ' , error);
+            if (this.counting > 100) {
+              console.log('stopCounting : ' , this.counting);
+              this.speechRecognition.stopListening();
+              throw errors;
+            }
+          }), 
+          delayWhen(_ => this.speech()),
+        )
+      ),
+      catchError((error) => {
+        console.error('error : ', error);
+        return of('');
+      }),
+      finalize(() => {
+        console.log('startSpeech finalize');
+        this.$stopSubect.next(false);
+      })
+    )
   }
+
+  mergeSpeech(): Observable<SpeechResult>{
+    const speechMerge = merge(this.speech(), this.startTimer());
+
+    return speechMerge.pipe(
+      map(_ => {
+        return {
+          count: 1,
+          matches :''
+        }
+      }),
+      retryWhen(errors =>
+        errors.pipe(
+          delayWhen(_ => speechMerge)
+        )
+      )
+    );
+  }
+
+  speech() {
+    return this.speechRecognition.startListening(this.config);
+  }
+
+  stopSpeech(): Observable<string>{
+    console.log('stop speech');
+    
+    this.speechRecognition.stopListening()
+      .then(() => {
+        this.$stopSubect.next(false);
+      });
+    return of('');
+  }
+
 }
