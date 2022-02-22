@@ -1,15 +1,16 @@
 import { Component,OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { SpeechRecognition } from '@awesome-cordova-plugins/speech-recognition/ngx';
+import { SpeechService } from './service/speech.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(public platform: Platform,private router: Router,private _location: Location, private speechRecognition: SpeechRecognition) {
+  constructor(public platform: Platform,
+              private _location: Location,
+              private speechService: SpeechService) {
     
     this.platform.ready().then(() => {
       console.log('platform ready');
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.reqeustPermission();
+    this.isRecgon();
   }
 
   appExit() {
@@ -36,11 +37,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  reqeustPermission() {
-    this.speechRecognition.requestPermission()
-      .then(
-         () => { console.log('Granted') }
-        ,() => { console.log('Denied') }
-      )
+  isRecgon() {
+    this.speechService.isRecognition()
   }
 }
