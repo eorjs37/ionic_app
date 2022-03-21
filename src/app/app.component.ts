@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
 import { SpeechService } from './service/speech.service';
+import { environment, SERVER_URL } from '../environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -19,7 +20,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isRecgon();
+    console.log(environment.production);
+    console.log(environment.apiUrl);
+
+    console.log(SERVER_URL);
+    
+    
+    //this.isRecgon();
   }
 
   appExit() {
