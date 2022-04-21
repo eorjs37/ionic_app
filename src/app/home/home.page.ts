@@ -12,7 +12,6 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.platform.ready().then(() => {
-     
     })
   }
 }
