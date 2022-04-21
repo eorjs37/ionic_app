@@ -1,8 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
-import { SpeechService } from './service/speech.service';
-import { environment, SERVER_URL } from '../environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -10,8 +8,7 @@ import { environment, SERVER_URL } from '../environments/environment';
 })
 export class AppComponent implements OnInit {
   constructor(public platform: Platform,
-              private _location: Location,
-              private speechService: SpeechService) {
+              private _location: Location) {
     
     this.platform.ready().then(() => {
       console.log('platform ready');
@@ -20,13 +17,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(environment.production);
-    console.log(environment.apiUrl);
-
-    console.log(SERVER_URL);
-    
-    
-    //this.isRecgon();
+  
   }
 
   appExit() {
@@ -42,9 +33,5 @@ export class AppComponent implements OnInit {
          this._location.back();
       }
     });
-  }
-
-  isRecgon() {
-    this.speechService.isRecognition()
   }
 }
