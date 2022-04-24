@@ -24,4 +24,28 @@ export class AlertService {
 
     await alert.present();
   }
+
+
+  async alertConfirm (title, message, callback1?,callback2?){
+    const alert = await this.alertController.create({
+      header:title,
+      message: message,
+      buttons:[
+        {
+          text:'취소',
+          handler:()=>{
+            callback1();
+          }
+        },
+        {
+          text:'확인',
+          handler:()=>{
+            callback2();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 }

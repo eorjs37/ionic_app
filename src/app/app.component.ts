@@ -1,18 +1,19 @@
 import { Component,OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
+import { AlertService } from '@/app/service/alert.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  navigate:any;
   constructor(public platform: Platform,
-              private _location: Location) {
-    
+              private _location: Location,
+              private alertService:AlertService) {
     this.platform.ready().then(() => {
-      console.log('platform ready');
-      this.appExit();
+        this.sideMenu();
     });
   }
 
@@ -23,15 +24,37 @@ export class AppComponent implements OnInit {
   appExit() {
     this.platform.backButton.subscribeWithPriority(10, () => {
       if (this._location.isCurrentPathEqualTo('/home')) {
-        console.log('Show Exit Alert!');
-        if (confirm('끄시겠습니까?')) {
-          navigator['app'].exitApp();
-        }
+        this.alertService.alertConfirm('앱 종료','앱을 종료하시겠습니까?',{},this.exitApp);
       } else {
          // Navigate to back page
          console.log('Navigate to back page');
          this._location.back();
       }
     });
+  }
+
+  exitApp(){
+    navigator['app'].exitApp();
+  }
+
+  sideMenu(){
+    this.navigate =
+    [
+      {
+        title : "Home",
+        url   : "/home",
+        icon  : "home"
+      },
+      {
+        title : "Chat",
+        url   : "/chat",
+        icon  : "chatbox-outline"
+      },
+      {
+        title : "Favorites",
+        url   : "/favorites",
+        icon  : "heart"
+      },
+    ]
   }
 }
