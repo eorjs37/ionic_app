@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatPage implements OnInit {
 
-  constructor() { }
+  constructor(private loacation:Location) { }
 
   ngOnInit() {
+  }
+
+  goBack(){
+    this.loacation.back();
   }
 
 }

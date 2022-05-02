@@ -1,0 +1,8 @@
+.acitve{
+    border-radius: 35px;
+    transition: 0.5s;
+}
+
+.acitve:active{
+    background-color: rgba(204,204,204,0.5);
+}
