@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
 import { AlertService } from '@/app/service/alert.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -11,7 +12,8 @@ export class AppComponent implements OnInit {
   navigate:any;
   constructor(public platform: Platform,
               private _location: Location,
-              private alertService:AlertService) {
+              private alertService:AlertService,
+              private router: Router) {
     this.platform.ready().then(() => {
         this.sideMenu();
     });
@@ -56,5 +58,9 @@ export class AppComponent implements OnInit {
         icon  : "heart"
       },
     ]
+  }
+
+  clickItem(url:string){
+    this.router.navigate([url]);
   }
 }
