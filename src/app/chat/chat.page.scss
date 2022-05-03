@@ -6,3 +6,68 @@
 .acitve:active{
     background-color: rgba(204,204,204,0.5);
 }
+
+ion-content{
+    padding: 10px;
+}
+
+.content{
+    padding: 10px;
+}
+
+.other{
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+
+    
+    .item1{
+        width: 20%;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .item2{
+        width: 75%;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-start;
+
+        .txt_left{
+            flex-basis: fill;
+            text-align: left;
+            word-break: break-all;
+        }
+    }
+}
+
+
+.me{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+
+    .item1{
+        width: 20%;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .item2{
+        width: 75%;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-end;
+
+        .txt_left{
+            flex-basis: fill;
+            text-align: left;
+            word-break: break-all;
+        }
+    }
+}
