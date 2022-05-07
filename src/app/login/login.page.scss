@@ -1,0 +1,37 @@
+.content{
+    height: 100vh;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.login_box{
+    width: 100%;
+}
+
+.item{
+    text-align: center;
+}
+
+.item1{
+    margin-top: 30px;
+}
+
+.item2{
+    margin-top: 30px;
+}
+
+.inputbox{
+    display: inline-block;
+    width: 75%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #000;
+}
