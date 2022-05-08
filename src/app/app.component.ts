@@ -3,6 +3,7 @@ import { Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
 import { AlertService } from '@/app/service/alert.service';
 import { Router } from '@angular/router';
+import { environment,SERVER_URL } from '@/environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -20,12 +21,16 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+    console.log('environment1 : ', environment);
+    console.log('SERVER_URL2 : ', SERVER_URL);
+    this.appExit();
   }
 
   appExit() {
     this.platform.backButton.subscribeWithPriority(10, () => {
-      if (this._location.isCurrentPathEqualTo('/home')) {
+      console.log('location : ', this._location);
+      
+      if (this._location.isCurrentPathEqualTo('/home') || this._location.isCurrentPathEqualTo('/login')) {
         this.alertService.alertConfirm('앱 종료','앱을 종료하시겠습니까?',{},this.exitApp);
       } else {
          // Navigate to back page
