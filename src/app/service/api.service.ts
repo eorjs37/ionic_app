@@ -17,4 +17,14 @@ export class ApiService {
   getCoffAll(){
     return this.http.get(SERVER_URL+'coffees/all');
   }
+
+  /**
+   * @description 로그인
+   * @param loginInfo 로그인정보
+   * @returns 
+   */
+  login(loginInfo){
+
+    return this.http.post(SERVER_URL+'ionic/user/login',loginInfo)
+  }
 }
