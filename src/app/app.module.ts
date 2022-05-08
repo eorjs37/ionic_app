@@ -31,6 +31,12 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
 //   window['__REDUX_DEVTOOLS_EXTENSION__'] = remoteDevToolsProxy;
 // }
 
+//fontawesome
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -44,6 +50,7 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
               logOnly: environment.production, // Restrict extension to log-only mode
               autoPause: true, 
             }),
+            FontAwesomeModule
             
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -60,4 +67,8 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
     StreamingMedia],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(library: FaIconLibrary) { 
+		library.addIconPacks(fas, fab, far);
+	}
+}
