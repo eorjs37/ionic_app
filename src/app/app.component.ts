@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { AlertService } from '@/app/service/alert.service';
 import { Router } from '@angular/router';
 import { environment,SERVER_URL } from '@/environments/environment';
+import { ApiService } from '@/app/service/api.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -14,9 +15,14 @@ export class AppComponent implements OnInit {
   constructor(public platform: Platform,
               private _location: Location,
               private alertService:AlertService,
-              private router: Router) {
+              private router: Router,
+              private apiService:ApiService) {
     this.platform.ready().then(() => {
         this.sideMenu();
+
+        this.apiService.getCoffAll().subscribe(data=>{
+          console.log('data : ', data);
+        })
     });
   }
 

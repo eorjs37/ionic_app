@@ -20,6 +20,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { File } from '@awesome-cordova-plugins/file/ngx';
+import { httpInterceptorProviders } from '@/app/http-interceptors';
 // if (!window['devToolsExtension'] && !window['__REDUX_DEVTOOLS_EXTENSION__']) {
 //   let remoteDevToolsProxy = new RemoteDevToolsProxy({
 //     connectTimeout: 300000, // extend for pauses during debugging
@@ -64,7 +65,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
     SpeechRecognition,
     MediaCapture,
     ImagePicker,
-    StreamingMedia],
+    StreamingMedia,
+    httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {
