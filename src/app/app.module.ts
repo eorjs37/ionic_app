@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
-import { RemoteDevToolsProxy } from './remote-devtools-proxy';
+
+// import { RemoteDevToolsProxy } from './remote-devtools-proxy';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -16,11 +18,19 @@ import { SpeechRecognition } from '@awesome-cordova-plugins/speech-recognition/n
 import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
 import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+
+//store
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
+import { countReducer } from '@/app/store/counter/counter.reducer';
+
+
+import { environment } from '@/environments/environment';
 import { File } from '@awesome-cordova-plugins/file/ngx';
+
+//interceptors
 import { httpInterceptorProviders } from '@/app/http-interceptors';
+
 // if (!window['devToolsExtension'] && !window['__REDUX_DEVTOOLS_EXTENSION__']) {
 //   let remoteDevToolsProxy = new RemoteDevToolsProxy({
 //     connectTimeout: 300000, // extend for pauses during debugging
@@ -45,7 +55,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
             IonicModule.forRoot(),
             AppRoutingModule,
             HttpClientModule,
-            StoreModule.forRoot({}),
+            StoreModule.forRoot({count:countReducer}),
             StoreDevtoolsModule.instrument({
               maxAge: 25, // Retains last 25 states
               logOnly: environment.production, // Restrict extension to log-only mode

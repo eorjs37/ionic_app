@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>counter</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div>Current Count: {{ count$ | async }}</div>
+  <button (click)="increment()">Increment</button>
+  <button (click)="decrement()">Decrement</button>
+  <button (click)="reset()">Reset Counter</button>
+
+</ion-content>
