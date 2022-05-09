@@ -1,7 +1,4 @@
 import { NgModule } from '@angular/core';
-
-// import { RemoteDevToolsProxy } from './remote-devtools-proxy';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -18,31 +15,28 @@ import { SpeechRecognition } from '@awesome-cordova-plugins/speech-recognition/n
 import { MediaCapture } from '@awesome-cordova-plugins/media-capture/ngx';
 import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { File } from '@awesome-cordova-plugins/file/ngx';
+import { environment } from '@/environments/environment';
 
 //store
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { localStorageSync } from 'ngrx-store-localstorage';
 import { countReducer } from '@/app/store/counter/counter.reducer';
-import { userInfoReducer } from '@/app/store/userinfo/userInfo.redecer';
-
-
-
-import { environment } from '@/environments/environment';
-import { File } from '@awesome-cordova-plugins/file/ngx';
+import { userInfoReducer } from '@/app/store/userinfo/userInfo.reducer';
 
 //interceptors
 import { httpInterceptorProviders } from '@/app/http-interceptors';
 
-// if (!window['devToolsExtension'] && !window['__REDUX_DEVTOOLS_EXTENSION__']) {
-//   let remoteDevToolsProxy = new RemoteDevToolsProxy({
-//     connectTimeout: 300000, // extend for pauses during debugging
-//     ackTimeout: 120000, // extend for pauses during debugging
-//     secure: false // dev only
-//   });
-
-//   window['devToolsExtension'] = remoteDevToolsProxy;
-//   window['__REDUX_DEVTOOLS_EXTENSION__'] = remoteDevToolsProxy;
-// }
+//ngrx-store-localstorage
+const reducers = {
+  userInfo : userInfoReducer,
+  count: countReducer
+}
+function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any>{
+  return localStorageSync({keys:['userInfo','count'], rehydrate: true})(reducer);
+}
+const metaReducers: Array<MetaReducer<any,any>> = [localStorageSyncReducer];
 
 //fontawesome
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -57,7 +51,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
             IonicModule.forRoot(),
             AppRoutingModule,
             HttpClientModule,
-            StoreModule.forRoot({count:countReducer,userInfo:userInfoReducer}),
+            StoreModule.forRoot(reducers,{metaReducers}),
             StoreDevtoolsModule.instrument({
               maxAge: 25, // Retains last 25 states
               logOnly: environment.production, // Restrict extension to log-only mode
