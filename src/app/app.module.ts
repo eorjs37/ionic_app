@@ -23,6 +23,8 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { countReducer } from '@/app/store/counter/counter.reducer';
+import { userInfoReducer } from '@/app/store/userinfo/userInfo.redecer';
+
 
 
 import { environment } from '@/environments/environment';
@@ -55,7 +57,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
             IonicModule.forRoot(),
             AppRoutingModule,
             HttpClientModule,
-            StoreModule.forRoot({count:countReducer}),
+            StoreModule.forRoot({count:countReducer,userInfo:userInfoReducer}),
             StoreDevtoolsModule.instrument({
               maxAge: 25, // Retains last 25 states
               logOnly: environment.production, // Restrict extension to log-only mode
