@@ -3,6 +3,8 @@ import { ApiService } from '@/app/service/api.service';
 import { UserInfo } from '@/app/store/interface/UserInfo';
 import { Store } from '@ngrx/store';
 import { setUserInfo } from '@/app/store/userinfo/userInfo.actions';
+import { Observable } from 'rxjs';
+import { getUserId } from '@/app/store/userinfo/userInfo.selectors';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,10 +17,12 @@ export class LoginPage implements OnInit {
   };
   password:string;
   userId:string;
+  userId$: Observable<string>;
 
   constructor(private apiService:ApiService, private userInfoStore: Store<{userInfo: UserInfo}>) { }
 
   ngOnInit() {
+    this.userId$ = this.userInfoStore.select(getUserId);
   }
 
   login(){

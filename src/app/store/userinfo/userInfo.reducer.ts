@@ -1,7 +1,7 @@
 import { createReducer,on } from "@ngrx/store";
 import { setUserInfo } from '@/app/store/userinfo/userInfo.actions'
-
-export const userInfoInitalState: any = {
+import { UserInfo } from "@/app/store/interface/UserInfo";
+export const userInfoInitalState: UserInfo = {
     accessToken : localStorage.getItem('accessToken') || '',
     UserId : localStorage.getItem('UseId') || ''
 }
