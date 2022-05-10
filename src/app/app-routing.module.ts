@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'rxjs-practice',
     pathMatch: 'full'
   },
   {
@@ -23,6 +23,11 @@ const routes: Routes = [
     path: 'counter',
     loadChildren: () => import('./counter/counter.module').then( m => m.CounterPageModule)
   },
+  {
+    path: 'rxjs-practice',
+    loadChildren: () => import('./pages/rxjs-practice/rxjs-practice.module').then( m => m.RxjsPracticePageModule)
+  },
+
 
 
 ];
