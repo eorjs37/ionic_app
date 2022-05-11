@@ -16,11 +16,13 @@ npm install "플러그인명" //플러그인 추가
 ## 개념 정리
 
  ### Observable
+ > 데이터를 내보내는 객체
 
  ### Obserable
+ > Obserable에서 방출한 객체를 전파받아 사용하는 객체를 Observer
 
  ### Operators
-
+ > 옵저버블을 다른형태로 변환하는 함수
 
 ## Observable
  

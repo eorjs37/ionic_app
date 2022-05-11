@@ -56,5 +56,4 @@ export class RxjsPracticePage implements OnInit {
     );
     results.subscribe(x => console.log(x));
   }
-
 }
