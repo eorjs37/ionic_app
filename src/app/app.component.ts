@@ -3,6 +3,7 @@ import { Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
 import { AlertService } from '@/app/service/alert.service';
 import { Router } from '@angular/router';
+import { ApiService } from '@/app/service/api.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -13,9 +14,12 @@ export class AppComponent implements OnInit {
   constructor(public platform: Platform,
               private _location: Location,
               private alertService:AlertService,
-              private router: Router) {
+              private router: Router,
+              private apiService:ApiService) {
     this.platform.ready().then(() => {
         this.sideMenu();
+
+        this.apiService.getCoffAll().subscribe();
     });
   }
 
@@ -26,7 +30,7 @@ export class AppComponent implements OnInit {
   appExit() {
     this.platform.backButton.subscribeWithPriority(10, () => {
       if (this._location.isCurrentPathEqualTo('/home') || this._location.isCurrentPathEqualTo('/login')) {
-        this.alertService.alertConfirm('앱 종료','앱을 종료하시겠습니까?',{},this.exitApp);
+        this.alertService.alertConfirm('앱 종료','앱을 종료하시겠습니까?',()=>{},this.exitApp);
       } else {
          // Navigate to back page
          console.log('Navigate to back page');

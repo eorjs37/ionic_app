@@ -16,7 +16,7 @@ export class AlertService {
         {
           text: '확인',
           handler: () => {
-            callback();
+            callback? callback() : ()=>{};
           }
         }
       ]

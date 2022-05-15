@@ -7,3 +7,8 @@ export const getUserId = createSelector(
     getUserInfo,
     (state: UserInfo) => state.UserId
 )
+
+export const getAccessToken = createSelector(
+    getUserInfo,
+    (state:UserInfo) => state.accessToken
+)
