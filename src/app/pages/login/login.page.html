@@ -8,13 +8,23 @@
     <div class="login_box">
       <div class="item item1">
         <fa-icon class="login_icon" icon="user"></fa-icon>
-        <input type="text" id="id" class="inputbox" [(ngModel)]="userId">
+        <input 
+               type="text" 
+               id="id" 
+               class="inputbox"
+               [(ngModel)]="loginGroup.userId">     
       </div>
       <div class="item item2">
         <fa-icon class="login_icon" icon="lock"></fa-icon>
-        <input type="password" id="password" class="inputbox" [(ngModel)]="password">
+        <input 
+          type="password" 
+          id="password" 
+          class="inputbox" 
+          name="password"
+          [(ngModel)]="loginGroup.password">
       </div>
     </div>
+    
 
     <div class="btn_boxs">
       <button class="btn_box login_btn" (click)="login()">LOGIN</button>

@@ -22,16 +22,16 @@ import { environment } from '@/environments/environment';
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
-import { countReducer } from '@/app/store/counter/counter.reducer';
 import { userInfoReducer } from '@/app/store/userinfo/userInfo.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from '@/app/store/userinfo/userInfo.effects';
 
 //interceptors
 import { httpInterceptorProviders } from '@/app/http-interceptors';
 
 //ngrx-store-localstorage
 const reducers = {
-  userInfo : userInfoReducer,
-  count: countReducer
+  userInfo : userInfoReducer
 }
 function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any>{
   return localStorageSync({keys:['userInfo','count'], rehydrate: true})(reducer);
@@ -57,6 +57,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
               logOnly: environment.production, // Restrict extension to log-only mode
               autoPause: true, 
             }),
+            EffectsModule.forRoot([UserEffects]),
             FontAwesomeModule
             
   ],
