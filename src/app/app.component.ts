@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
         this.sideMenu();
         this.deploy.configure({channel: 'Production'});
+
+
         this.apiService.getCoffAll().subscribe();
 
 
@@ -82,8 +84,17 @@ export class AppComponent implements OnInit {
   }
 
   async  checkVersion(){
-    const versions = this.deploy.getAvailableVersions();
+    const versions = await this.deploy.getAvailableVersions();
     console.log('versions : ', versions);
     
   }
+
+  async performManualUpdate() {
+    const update = await this.deploy.checkForUpdate();
+    if(update){
+      console.log('update : ', update);
+      
+    }
+  }
+
 }
