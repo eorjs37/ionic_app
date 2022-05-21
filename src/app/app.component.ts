@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 import { AlertService } from '@/app/service/alert.service';
 import { Router } from '@angular/router';
 import { ApiService } from '@/app/service/api.service';
+// Angular
+import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -15,11 +17,16 @@ export class AppComponent implements OnInit {
               private _location: Location,
               private alertService:AlertService,
               private router: Router,
-              private apiService:ApiService) {
+              private apiService:ApiService,
+              private deploy: Deploy) {
     this.platform.ready().then(() => {
         this.sideMenu();
-
+        this.deploy.configure({channel: 'Production'});
         this.apiService.getCoffAll().subscribe();
+
+
+        //버전체크
+        this.checkVersion();
     });
   }
 
@@ -72,5 +79,11 @@ export class AppComponent implements OnInit {
 
   clickItem(url:string){
     this.router.navigate([url]);
+  }
+
+  async  checkVersion(){
+    const versions = this.deploy.getAvailableVersions();
+    console.log('versions : ', versions);
+    
   }
 }
