@@ -30,9 +30,9 @@ export class AppComponent implements OnInit {
   appExit() {
     this.platform.backButton.subscribeWithPriority(10, () => {
       if (this._location.isCurrentPathEqualTo('/home') || this._location.isCurrentPathEqualTo('/login')) {
-        this.alertService.alertConfirm('앱 종료','앱을 종료하시겠습니까?',()=>{},this.exitApp);
+        this.alertService.alertConfirm('앱 종료','앱을 종료하시겠습니까??',()=>{},this.exitApp);
       } else {
-         // Navigate to back page
+         // Navigate to back pagea
          console.log('Navigate to back page');
          this._location.back();
       }
