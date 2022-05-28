@@ -76,6 +76,11 @@ export class AppComponent implements OnInit {
         url   : "/favorites",
         icon  : "heart"
       },
+      {
+        title : "Update",
+        url   : "/update",
+        icon  : "heart"
+      }
     ]
   }
 
