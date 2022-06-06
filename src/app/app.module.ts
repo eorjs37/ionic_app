@@ -45,7 +45,7 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 // Angular
-import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
+// import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -77,7 +77,8 @@ import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
     ImagePicker,
     StreamingMedia,
     httpInterceptorProviders,
-    Deploy],
+    //Deploy
+    ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

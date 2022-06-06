@@ -11,4 +11,4 @@ export const getUserId = createSelector(
 export const getAccessToken = createSelector(
     getUserInfo,
     (state:UserInfo) => state.accessToken
-)
+);
