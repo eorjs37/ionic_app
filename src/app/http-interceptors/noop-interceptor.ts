@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { UserInfo } from '@/app/store/interface/UserInfo';
 import { getAccessToken } from '@/app/store/userinfo/userInfo.selectors';
-import { mergeMap} from 'rxjs/operators';
+import { concatMap} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AlertService } from '@/app/service/alert.service';
 
@@ -17,21 +17,18 @@ export class NoopInterceptor implements HttpInterceptor {
                 private alertService:AlertService){
                     
         this.userInfoStore.select(getAccessToken).pipe(
-            mergeMap((token) => {
+            concatMap((token) => {
                 if(!token){
-                    console.log('token : ', token);
                     if(this.router.url !== '/login'){
-                        this.alertService.alert('로그인','만료되었으니 재로그인 해주세요');
                         this.router.navigateByUrl('/login');
                     }
                     return 'fail';
                 }
-
                 this.token = token;
                 this.router.navigateByUrl('/home');
                 return token;
             })
-        ).subscribe()
+        ).subscribe();
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

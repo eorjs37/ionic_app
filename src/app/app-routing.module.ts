@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'update',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -27,10 +27,6 @@ const routes: Routes = [
     path: 'update',
     loadChildren: () => import('./pages/update/update.module').then( m => m.UpdatePageModule)
   },
-
-
-
-
 ];
 
 @NgModule({
