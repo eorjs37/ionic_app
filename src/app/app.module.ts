@@ -76,7 +76,7 @@ import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
     MediaCapture,
     ImagePicker,
     StreamingMedia,
-    httpInterceptorProviders,
+    //httpInterceptorProviders,
     Deploy
     ],
   bootstrap: [AppComponent],

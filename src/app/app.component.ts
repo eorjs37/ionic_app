@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
               private apiService:ApiService,
               private deploy:Deploy) {
     this.platform.ready().then(async () => {
+        
+        this.apiService.getCoffAll().subscribe();
         this.sideMenu();
         
         await this.deploy.configure({
@@ -28,7 +30,6 @@ export class AppComponent implements OnInit {
         })
         const update = await this.deploy.checkForUpdate();
         if(update.available){
-          alert("업데이트 가능");
           await this.deploy.downloadUpdate((progress)=>{
             console.log('download progress : ' , progress);
           });
@@ -40,7 +41,7 @@ export class AppComponent implements OnInit {
 
           await this.deploy.reloadApp();
         }
-        //this.apiService.getCoffAll().subscribe();
+        
     });
   }
 
