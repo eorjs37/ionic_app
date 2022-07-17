@@ -1,6 +1,6 @@
 {
   "name": "myFirstApp",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -9,7 +9,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "cordova-livereload-android": "ionic cordova run android -l",
+    "cordova-build-android": "ionic cordova build android"
   },
   "private": true,
   "dependencies": {

@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { AlertService } from '@/app/service/alert.service';
 import { Router } from '@angular/router';
 import { ApiService } from '@/app/service/api.service';
-
+import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,13 +16,31 @@ export class AppComponent implements OnInit {
               private _location: Location,
               private alertService:AlertService,
               private router: Router,
-              private apiService:ApiService) {
-    this.platform.ready().then(() => {
+              private apiService:ApiService,
+              private deploy:Deploy) {
+    this.platform.ready().then(async () => {
         this.sideMenu();
-        //this.deploy.configure({channel: 'Production'});
+        
+        await this.deploy.configure({
+          appId:'2bdcce2b',
+          updateMethod:'none',
+          channel: 'Production'
+        })
+        const update = await this.deploy.checkForUpdate();
+        if(update.available){
+          alert("업데이트 가능");
+          await this.deploy.downloadUpdate((progress)=>{
+            console.log('download progress : ' , progress);
+          });
 
+          await this.deploy.extractUpdate((progress)=>{
+            console.log('extractUpdate progress : ' , progress);
+            
+          });
 
-        this.apiService.getCoffAll().subscribe();
+          await this.deploy.reloadApp();
+        }
+        //this.apiService.getCoffAll().subscribe();
     });
   }
 
