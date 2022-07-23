@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertService } from '@/app/service/alert.service';
 
 // Angular
-// import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
+import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
 
 @Component({
   selector: 'app-update',
@@ -11,28 +11,42 @@ import { AlertService } from '@/app/service/alert.service';
 })
 export class UpdatePage implements OnInit {
   public progressBar: number = 0;
-  public progressBarValue: number = this.progressBar*0.01;
+  public count: number = 0;
+  public progressBarValue: number = this.progressBar * 0.01;
   constructor(private alertService: AlertService
-    // ,private deploy: Deploy
-    ) { }
+    , private deploy: Deploy
+  ) { }
 
   ngOnInit() {
     this.performManualUpdate();
   }
 
   async performManualUpdate() {
-    // const update = await this.deploy.checkForUpdate();
-    // if(update.available){
-    //   console.log('update : ', update);
-    //   await this.deploy.downloadUpdate((progress) =>{
-    //     console.log('progress : ', progress);
-    //     this.progressBar = progress;
-    //     this.progressBarValue = progress*0.01;
-    //     if(progress === 100){
-    //       this.alertService.alert("완료","업데이트가 완료되었습니다");
-    //     }
-    //   })
-    // }
+
+
+    await this.deploy.configure({
+      appId: '2bdcce2b',
+      updateMethod: 'none',
+      channel: 'Production'
+    });
+
+    const update = await this.deploy.checkForUpdate();
+
+    if (update.available) {
+
+
+      await this.deploy.downloadUpdate((progress) => {
+        console.log('download progress : ', progress);
+        this.progressBar = progress;
+      });
+
+      await this.deploy.extractUpdate((progress) => {
+        console.log('extractUpdate progress : ', progress);
+
+      });
+
+      await this.deploy.reloadApp();
+    }
   }
 
 }

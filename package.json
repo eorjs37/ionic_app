@@ -55,6 +55,7 @@
     "cordova": "^11.0.0",
     "cordova-plugin-whitelist": "^1.3.5",
     "howler": "^2.2.3",
+    "ng-circle-progress": "^1.6.0",
     "ngrx-store-localstorage": "^13.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",

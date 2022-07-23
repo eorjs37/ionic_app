@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'update',
     pathMatch: 'full'
   },
   {
@@ -13,19 +13,19 @@ const routes: Routes = [
   },
   {
     path: 'chat',
-    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+    loadChildren: () => import('./pages/chat/chat.module').then(m => m.ChatPageModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'rxjs-practice',
-    loadChildren: () => import('./pages/rxjs-practice/rxjs-practice.module').then( m => m.RxjsPracticePageModule)
+    loadChildren: () => import('./pages/rxjs-practice/rxjs-practice.module').then(m => m.RxjsPracticePageModule)
   },
   {
     path: 'update',
-    loadChildren: () => import('./pages/update/update.module').then( m => m.UpdatePageModule)
+    loadChildren: () => import('./pages/update/update.module').then(m => m.UpdatePageModule)
   },
 ];
 

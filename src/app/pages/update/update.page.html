@@ -1,19 +1,11 @@
-<ion-header translucent>
-  <ion-toolbar>
-    <ion-title>update</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content fullscreen>
   <div class="update">
     <ion-grid>
       <ion-row>
         <ion-col size="12" class="ion-text-center">
-          <ion-text color="secondary">
-            <h1>{{ progressBar }}%</h1>
-          </ion-text>
           <!-- Default Progressbar with 50 percent -->
-          <ion-progress-bar [value]="progressBarValue"></ion-progress-bar>
+          <circle-progress [percent]="progressBar" [radius]="100">
+          </circle-progress>
         </ion-col>
       </ion-row>
     </ion-grid>

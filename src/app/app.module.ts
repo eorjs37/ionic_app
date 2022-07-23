@@ -29,14 +29,15 @@ import { UserEffects } from '@/app/store/userinfo/userInfo.effects';
 //interceptors
 import { httpInterceptorProviders } from '@/app/http-interceptors';
 
+
 //ngrx-store-localstorage
 const reducers = {
-  userInfo : userInfoReducer
+  userInfo: userInfoReducer
 }
-function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any>{
-  return localStorageSync({keys:['userInfo','count'], rehydrate: true})(reducer);
+function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({ keys: ['userInfo', 'count'], rehydrate: true })(reducer);
 }
-const metaReducers: Array<MetaReducer<any,any>> = [localStorageSyncReducer];
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 //fontawesome
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -51,18 +52,18 @@ import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,
-            IonicModule.forRoot(),
-            AppRoutingModule,
-            HttpClientModule,
-            StoreModule.forRoot(reducers,{metaReducers}),
-            StoreDevtoolsModule.instrument({
-              maxAge: 25, // Retains last 25 states
-              logOnly: environment.production, // Restrict extension to log-only mode
-              autoPause: true, 
-            }),
-            EffectsModule.forRoot([UserEffects]),
-            FontAwesomeModule
-            
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true,
+    }),
+    EffectsModule.forRoot([UserEffects]),
+    FontAwesomeModule,
+
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     File,
@@ -78,11 +79,11 @@ import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
     StreamingMedia,
     //httpInterceptorProviders,
     Deploy
-    ],
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(library: FaIconLibrary) { 
-		library.addIconPacks(fas, fab, far);
-	}
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, fab, far);
+  }
 }
