@@ -5,6 +5,7 @@ import { AlertService } from '@/app/service/alert.service';
 import { Router } from '@angular/router';
 import { ApiService } from '@/app/service/api.service';
 import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
+import { environment } from '@/environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -23,24 +24,18 @@ export class AppComponent implements OnInit {
       this.apiService.getCoffAll().subscribe();
       this.sideMenu();
 
-      // await this.deploy.configure({
-      //   appId: '2bdcce2b',
-      //   updateMethod: 'none',
-      //   channel: 'Production'
-      // })
-      // const update = await this.deploy.checkForUpdate();
-      // if (update.available) {
-      //   await this.deploy.downloadUpdate((progress) => {
-      //     console.log('download progress : ', progress);
-      //   });
+      console.log('environment : ', environment);
+      
 
-      //   await this.deploy.extractUpdate((progress) => {
-      //     console.log('extractUpdate progress : ', progress);
-
-      //   });
-
-      //   await this.deploy.reloadApp();
-      // }
+      await this.deploy.configure({
+        appId: environment.appId,
+        updateMethod: 'none',
+        channel: environment.channel
+      })
+      const update = await this.deploy.checkForUpdate();
+      if (update.available) {
+        this.router.navigate(['/update'])
+      }
 
     });
   }

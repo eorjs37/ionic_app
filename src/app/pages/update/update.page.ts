@@ -4,6 +4,9 @@ import { AlertService } from '@/app/service/alert.service';
 // Angular
 import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
 
+//environment
+import { environment,updateMethod } from '@/environments/environment';
+
 @Component({
   selector: 'app-update',
   templateUrl: './update.page.html',
@@ -25,9 +28,9 @@ export class UpdatePage implements OnInit {
 
 
     await this.deploy.configure({
-      appId: '2bdcce2b',
+      appId: environment.appId,
       updateMethod: 'none',
-      channel: 'Production'
+      channel: environment.channel
     });
 
     const update = await this.deploy.checkForUpdate();
