@@ -1,9 +1,9 @@
 export const environment = {
-  production: false,
-  apiUrl:'dev',
+  production: true,
+  apiUrl:'real',
   appId:'2bdcce2b',
   updateMethod: 'none',
-  channel: 'Dev'
+  channel: 'Production'
 };
 export const updateMethod:string = 'none';
 export const SERVER_URL = 'https://biggunsite.co.kr/api/';
