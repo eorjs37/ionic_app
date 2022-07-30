@@ -3,7 +3,8 @@ export const environment = {
     apiUrl:'dev',
     appId:'2bdcce2b',
     updateMethod: 'none',
-    channel: 'Dev'
+    channel: 'Dev',
+    test:'Dev'
 };
 
 export const updateMethod:string = 'none';
