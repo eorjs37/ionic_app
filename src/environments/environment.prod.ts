@@ -1,10 +1,10 @@
 export const environment = {
   production: true,
-  apiUrl:'real',
-  appId:'2bdcce2b',
+  apiUrl: 'real',
+  appId: 'e9af52e7',
   updateMethod: 'none',
-  channel: 'Stage',
-  test:'Dev'
+  channel: 'Production',
+  test: 'Prod',
 };
-export const updateMethod:string = 'none';
-export const SERVER_URL = 'https://biggunsite.co.kr/api/';
+export const updateMethod: string = 'none';
+export const SERVER_URL = 'https://biggunsite.co.kr/api/'; //운영 API
