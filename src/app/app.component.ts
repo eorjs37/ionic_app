@@ -24,9 +24,6 @@ export class AppComponent implements OnInit {
       this.apiService.getCoffAll().subscribe();
       this.sideMenu();
 
-      console.log('environment : ', environment);
-      
-
       await this.deploy.configure({
         appId: environment.appId,
         updateMethod: 'none',
