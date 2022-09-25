@@ -11,54 +11,52 @@ import { AlertService } from '@/app/service/alert.service';
 })
 export class LoginPage implements OnInit {
   userInfo: UserInfo = {
-    UserId:'',
-    accessToken:''
+    UserId: '',
+    accessToken: '',
   };
-  loginGroup:any = {
-    userId:'',
-    password:''
+  loginGroup: any = {
+    userId: '',
+    password: '',
   };
   loginForm: FormGroup;
-  userId:string;
+  userId: string;
 
-  constructor(private userInfoStore: Store<{userInfo: UserInfo}>, private alertService:AlertService) { }
+  constructor(
+    private userInfoStore: Store<{ userInfo: UserInfo }>,
+    private alertService: AlertService
+  ) {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
-  async login(){
+  async login() {
     //chleorjs37@gmail.com
     //chleorjs12@
 
-    const userId = new FormControl(this.loginGroup.userId,[
+    const userId = new FormControl(this.loginGroup.userId, [
       Validators.required,
-      Validators.email
+      Validators.email,
     ]);
-    const password = new FormControl(this.loginGroup.password,[
-      Validators.required
+    const password = new FormControl(this.loginGroup.password, [
+      Validators.required,
     ]);
 
-
-    if(userId.errors?.['required']){
-      this.alertService.alert('오류','아이디를 입력해주세요.',()=>{});
+    if (userId.errors?.['required']) {
+      this.alertService.alert('오류', '아이디를 입력해주세요.', () => {});
       return false;
-    }else if(userId.errors?.['email']){
-      this.alertService.alert('오류','이메일형식으로 입력해주세요.',()=>{});
+    } else if (userId.errors?.['email']) {
+      this.alertService.alert('오류', '이메일형식으로 입력해주세요.', () => {});
       return false;
     }
 
-
-    if(password.errors?.['required']){
-      this.alertService.alert('오류','비밀번호를 입력해주세요.',()=>{});
+    if (password.errors?.['required']) {
+      this.alertService.alert('오류', '비밀번호를 입력해주세요.', () => {});
       return false;
     }
-    
+
     const userInfo = {
-      UserId:this.loginGroup.userId,
-      PassWord:this.loginGroup.password
-    }
-    await this.userInfoStore.dispatch(setUserInfoLoad({userInfo}));
+      UserId: this.loginGroup.userId,
+      PassWord: this.loginGroup.password,
+    };
+    await this.userInfoStore.dispatch(setUserInfoLoad({ userInfo }));
   }
-
 }
