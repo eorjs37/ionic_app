@@ -1,0 +1,20 @@
+{
+  "android": {
+    "debug": {
+      "keystore": "./appkey.jks",
+      "storePassword": "chleorjs12@",
+      "alias": "appkey",
+      "password": "chleorjs12@",
+      "keystoreType": "",
+      "packageType": "apk"
+    },
+    "release": {
+      "keystore": "./appkey.jks",
+      "storePassword": "chleorjs12@",
+      "alias": "appkey",
+      "password": "chleorjs12@",
+      "keystoreType": "",
+      "packageType": "bundle"
+    }
+  }
+}

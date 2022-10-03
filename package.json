@@ -11,7 +11,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cordova-livereload-android": "ionic cordova run android -l",
-    "cordova-build-android": "ionic cordova build android"
+    "cordova-build-android": "ionic cordova build android",
+    "android-relaease": "ionic cordova build android --prod --release --buildConfig=build.json"
   },
   "private": true,
   "dependencies": {
