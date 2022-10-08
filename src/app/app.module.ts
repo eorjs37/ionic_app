@@ -29,20 +29,26 @@ import { UserEffects } from '@/app/store/userinfo/userInfo.effects';
 //interceptors
 import { httpInterceptorProviders } from '@/app/http-interceptors';
 
-
 //ngrx-store-localstorage
 const reducers = {
-  userInfo: userInfoReducer
-}
-function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-  return localStorageSync({ keys: ['userInfo', 'count'], rehydrate: true })(reducer);
+  userInfo: userInfoReducer,
+};
+function localStorageSyncReducer(
+  reducer: ActionReducer<any>
+): ActionReducer<any> {
+  return localStorageSync({ keys: ['userInfo', 'count'], rehydrate: true })(
+    reducer
+  );
 }
 const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 //fontawesome
-import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 // Angular
@@ -51,7 +57,8 @@ import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,
+  imports: [
+    BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
@@ -63,9 +70,9 @@ import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
     }),
     EffectsModule.forRoot([UserEffects]),
     FontAwesomeModule,
-
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     File,
     Media,
     AndroidPermissions,
@@ -77,8 +84,8 @@ import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
     MediaCapture,
     ImagePicker,
     StreamingMedia,
-    //httpInterceptorProviders,
-    Deploy
+    httpInterceptorProviders,
+    Deploy,
   ],
   bootstrap: [AppComponent],
 })
