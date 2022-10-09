@@ -3,6 +3,9 @@ import { Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
 import { AlertService } from '@/app/service/alert.service';
 import { Router } from '@angular/router';
+import { UserInfo } from '@/app/store/interface/UserInfo';
+import { Store } from '@ngrx/store';
+import { setClearUserInfo } from '@/app/store/userinfo/userInfo.actions';
 import { ApiService } from '@/app/service/api.service';
 import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
 import { environment } from '@/environments/environment';
@@ -14,6 +17,7 @@ import { environment } from '@/environments/environment';
 export class AppComponent implements OnInit {
   navigate: any;
   constructor(
+    public userInfoStore: Store<{ userInfo: UserInfo }>,
     public platform: Platform,
     private _location: Location,
     private alertService: AlertService,
@@ -39,6 +43,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.appExit();
+
+    console.log(this.userInfoStore);
   }
 
   appExit() {
@@ -60,6 +66,11 @@ export class AppComponent implements OnInit {
       }
     });
   }
+
+  /**
+   * @description 로그아웃
+   */
+  appLogOut() {}
 
   /**
    * @description 앱 이탈
@@ -97,7 +108,10 @@ export class AppComponent implements OnInit {
         '로그아웃',
         '로그아웃 하시겠습니까?',
         () => {},
-        this.exitApp
+        () => {
+          this.userInfoStore.dispatch(setClearUserInfo());
+          this.router.navigate(['/login']);
+        }
       );
     } else {
       this.router.navigate([url]);
