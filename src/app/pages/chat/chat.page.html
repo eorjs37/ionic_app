@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="orange">
     <ion-buttons slot="start" (click)="goBack()">
-      <ion-icon class="acitve" size="large" name="chevron-back"></ion-icon>
+      <ion-icon color="white" class="acitve" size="large" name="chevron-back"></ion-icon>
     </ion-buttons>
-    <ion-title>chat</ion-title>
+    <ion-title color="white">chat</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -80,3 +80,18 @@
     </div>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-row align-items-center no-padding>
+      <ion-col size="10">
+        <textarea autosize maxRows="4" [(ngModel)]="newMsg" class="message-input"></textarea>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="block" fill="clear" color="primary" class="msg-btn">
+          <ion-icon slot="icon-only" name="send"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

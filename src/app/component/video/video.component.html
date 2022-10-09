@@ -1,0 +1,13 @@
+<ion-slides pager="true" [options]="slideOpts">
+  <ion-slide *ngFor="let slideItem of slideArray">
+    <ion-card>
+      <h1 class="img-outer">
+        <img class="banner-img" src={{slideItem.img}}>
+      </h1>
+
+      <ion-card-header>
+        <ion-card-title>{{ slideItem.title }}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ion-slide>
+</ion-slides>

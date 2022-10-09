@@ -13,27 +13,27 @@ import { environment } from '@/environments/environment';
 })
 export class AppComponent implements OnInit {
   navigate: any;
-  constructor(public platform: Platform,
+  constructor(
+    public platform: Platform,
     private _location: Location,
     private alertService: AlertService,
     private router: Router,
     private apiService: ApiService,
-    private deploy: Deploy) {
+    private deploy: Deploy
+  ) {
     this.platform.ready().then(async () => {
-
       this.apiService.getCoffAll().subscribe();
       this.sideMenu();
 
       await this.deploy.configure({
         appId: environment.appId,
         updateMethod: 'none',
-        channel: environment.channel
-      })
+        channel: environment.channel,
+      });
       const update = await this.deploy.checkForUpdate();
       if (update.available) {
-        this.router.navigate(['/update'])
+        this.router.navigate(['/update']);
       }
-
     });
   }
 
@@ -43,8 +43,16 @@ export class AppComponent implements OnInit {
 
   appExit() {
     this.platform.backButton.subscribeWithPriority(10, () => {
-      if (this._location.isCurrentPathEqualTo('/home') || this._location.isCurrentPathEqualTo('/login')) {
-        this.alertService.alertConfirm('앱 종료', '앱을 종료하시겠습니까??', () => { }, this.exitApp);
+      if (
+        this._location.isCurrentPathEqualTo('/home') ||
+        this._location.isCurrentPathEqualTo('/login')
+      ) {
+        this.alertService.alertConfirm(
+          '앱 종료',
+          '앱을 종료하시겠습니까??',
+          () => {},
+          this.exitApp
+        );
       } else {
         // Navigate to back pagea
         console.log('Navigate to back page');
@@ -64,33 +72,35 @@ export class AppComponent implements OnInit {
    * @description 사이드 메뉴
    */
   sideMenu() {
-    this.navigate =
-      [
-        {
-          title: "Home",
-          url: "/home",
-          icon: "home"
-        },
-        {
-          title: "Chat",
-          url: "/chat",
-          icon: "chatbox-outline"
-        },
-        {
-          title: "Favorites",
-          url: "/favorites",
-          icon: "heart"
-        },
-        {
-          title: "Update",
-          url: "/update",
-          icon: "heart"
-        }
-      ]
+    this.navigate = [
+      {
+        title: 'Home',
+        url: '/home',
+        icon: 'home',
+      },
+      {
+        title: 'Chat',
+        url: '/chat',
+        icon: 'chatbox-outline',
+      },
+      {
+        title: '로그아웃',
+        url: '/logout',
+        icon: 'log-out',
+      },
+    ];
   }
 
   clickItem(url: string) {
-    this.router.navigate([url]);
+    if (url === '/logout') {
+      this.alertService.alertConfirm(
+        '로그아웃',
+        '로그아웃 하시겠습니까?',
+        () => {},
+        this.exitApp
+      );
+    } else {
+      this.router.navigate([url]);
+    }
   }
-
 }

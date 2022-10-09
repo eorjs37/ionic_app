@@ -34,14 +34,13 @@ export class AuthGuard implements CanActivate {
       (token) => {
         if (token) {
           this.UserLogedIn = true;
-          return true;
         } else {
           this.UserLogedIn = false;
-          return false;
         }
       },
       (err) => {
         console.error('token error : ', err);
+        this.router.navigate(['/home']);
         return false;
       }
     );

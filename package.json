@@ -28,6 +28,7 @@
     "@awesome-cordova-plugins/media": "^5.37.3",
     "@awesome-cordova-plugins/media-capture": "^5.37.2",
     "@awesome-cordova-plugins/speech-recognition": "^5.37.1",
+    "@awesome-cordova-plugins/splash-screen": "^5.45.0",
     "@fortawesome/angular-fontawesome": "^0.10.2",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
@@ -58,6 +59,7 @@
     "howler": "^2.2.3",
     "ng-circle-progress": "^1.6.0",
     "ngrx-store-localstorage": "^13.0.1",
+    "ngx-autosize": "^2.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

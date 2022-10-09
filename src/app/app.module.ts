@@ -29,6 +29,9 @@ import { UserEffects } from '@/app/store/userinfo/userInfo.effects';
 //interceptors
 import { httpInterceptorProviders } from '@/app/http-interceptors';
 
+//auto size
+import { AutosizeModule } from 'ngx-autosize';
+
 //ngrx-store-localstorage
 const reducers = {
   userInfo: userInfoReducer,
@@ -70,6 +73,7 @@ import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
     }),
     EffectsModule.forRoot([UserEffects]),
     FontAwesomeModule,
+    AutosizeModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

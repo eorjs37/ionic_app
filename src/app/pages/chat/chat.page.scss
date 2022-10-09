@@ -1,73 +1,84 @@
-.acitve{
-    border-radius: 35px;
-    transition: 0.5s;
+.acitve {
+  border-radius: 35px;
+  transition: 0.5s;
 }
 
-.acitve:active{
-    background-color: rgba(204,204,204,0.5);
+.acitve:active {
+  background-color: rgba(204, 204, 204, 0.5);
 }
 
-ion-content{
+ion-content {
+  padding: 10px;
+}
+
+.content {
+  padding: 10px;
+}
+
+.other {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+
+  .item1 {
+    width: 20%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .item2 {
+    width: 75%;
     padding: 10px;
-}
-
-.content{
-    padding: 10px;
-}
-
-.other{
     display: flex;
-    border-bottom: 1px solid #eee;
-    padding: 10px;
+    justify-content: flex-start;
 
-    
-    .item1{
-        width: 20%;
-
-        img{
-            width: 100%;
-        }
+    .txt_left {
+      flex-basis: fill;
+      text-align: left;
+      word-break: break-all;
     }
-
-    .item2{
-        width: 75%;
-        padding: 10px;
-        display: flex;
-        justify-content: flex-start;
-
-        .txt_left{
-            flex-basis: fill;
-            text-align: left;
-            word-break: break-all;
-        }
-    }
+  }
 }
 
+.me {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
 
-.me{
+  .item1 {
+    width: 20%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .item2 {
+    width: 75%;
+    padding: 10px;
     display: flex;
     justify-content: flex-end;
-    border-bottom: 1px solid #eee;
-    padding: 10px;
 
-    .item1{
-        width: 20%;
-
-        img{
-            width: 100%;
-        }
+    .txt_left {
+      flex-basis: fill;
+      text-align: left;
+      word-break: break-all;
     }
+  }
+}
 
-    .item2{
-        width: 75%;
-        padding: 10px;
-        display: flex;
-        justify-content: flex-end;
+.message-input {
+  width: 100%;
+  border: 1px solid var(--ion-color-mediun);
+  border-radius: 10px;
+  background-color: #fff;
+  resize: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
-        .txt_left{
-            flex-basis: fill;
-            text-align: left;
-            word-break: break-all;
-        }
-    }
+.msg-btn {
 }
