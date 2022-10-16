@@ -12,13 +12,11 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomePageModule),
-    canActivate: [AuthGuard],
   },
   {
     path: 'chat',
     loadChildren: () =>
       import('./pages/chat/chat.module').then((m) => m.ChatPageModule),
-    canActivate: [AuthGuard],
   },
   {
     path: 'login',
@@ -31,13 +29,11 @@ const routes: Routes = [
       import('./pages/rxjs-practice/rxjs-practice.module').then(
         (m) => m.RxjsPracticePageModule
       ),
-    canActivate: [AuthGuard],
   },
   {
     path: 'update',
     loadChildren: () =>
       import('./pages/update/update.module').then((m) => m.UpdatePageModule),
-    canActivate: [AuthGuard],
   },
 ];
 

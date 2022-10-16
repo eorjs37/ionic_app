@@ -34,7 +34,9 @@ export class AppComponent implements OnInit {
         updateMethod: 'none',
         channel: environment.channel,
       });
+
       const update = await this.deploy.checkForUpdate();
+
       if (update.available) {
         this.router.navigate(['/update']);
       }
