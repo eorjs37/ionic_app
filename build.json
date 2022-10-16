@@ -14,7 +14,7 @@
       "alias": "appkey",
       "password": "chleorjs12@",
       "keystoreType": "",
-      "packageType": "bundle"
+      "packageType": "apk"
     }
   }
 }
