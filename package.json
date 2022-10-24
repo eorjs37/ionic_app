@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~12.1.1",
     "@angular/router": "~12.1.1",
     "@awesome-cordova-plugins/core": "^5.37.1",
+    "@awesome-cordova-plugins/fcm": "^6.1.0",
     "@awesome-cordova-plugins/file": "^5.37.2",
     "@awesome-cordova-plugins/media": "^5.37.3",
     "@awesome-cordova-plugins/media-capture": "^5.37.2",
@@ -83,6 +84,7 @@
     "@typescript-eslint/parser": "4.16.1",
     "com-sarriaroman-photoviewer": "^1.2.5",
     "cordova-android": "10.1.2",
+    "cordova-plugin-fcm-with-dependecy-updated": "^7.8.0",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-ionic": "^5.5.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
@@ -152,7 +154,8 @@
         "MAX_STORE": "2",
         "MIN_BACKGROUND_DURATION": "30",
         "UPDATE_API": "https://api.ionicjs.com"
-      }
+      },
+      "cordova-plugin-fcm-with-dependecy-updated": {}
     },
     "platforms": [
       "android"

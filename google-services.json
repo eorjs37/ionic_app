@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "840193369886",
+    "project_id": "maxgunapp",
+    "storage_bucket": "maxgunapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840193369886:android:99c951858391aee739cb0f",
+        "android_client_info": {
+          "package_name": "com.maxgun.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840193369886-91tgq472va3u7llbl9a84dtai1g80201.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADWbi41XjGbUJw04I8oTLuIJKv3CAtK04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840193369886-91tgq472va3u7llbl9a84dtai1g80201.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
