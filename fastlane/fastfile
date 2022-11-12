@@ -9,18 +9,18 @@ platform :android do
             keystore_alias: 'appkey',
             keystore_password: 'chleorjs12@'
         )
-        supply(apk: ENV['CORDOVA_ANDROID_RELEASE_BUILD_PATH'])
-    end
 
-    
+      
 
-    #debug
-    lane :debug do
 
     end
+
 
     #test(firebase 테스트 앱 전달)
-    lane :test do
+    lane :distribute do
+        sh("sh android.sh")
+
+        sh("pwd")
 
     end
 

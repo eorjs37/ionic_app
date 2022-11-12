@@ -23,6 +23,22 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Deploy android
 
+### android distribute
+
+```sh
+[bundle exec] fastlane android distribute
+```
+
+
+
+### android deploy
+
+```sh
+[bundle exec] fastlane android deploy
+```
+
+
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
