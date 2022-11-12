@@ -1,0 +1,32 @@
+platform :android do
+    desc "Deploy android"
+
+    #build
+    lane :build do
+        ionic(
+            platform: 'android',
+            keystore_path: "./appkey.jks",
+            keystore_alias: 'appkey',
+            keystore_password: 'chleorjs12@'
+        )
+        supply(apk: ENV['CORDOVA_ANDROID_RELEASE_BUILD_PATH'])
+    end
+
+    
+
+    #debug
+    lane :debug do
+
+    end
+
+    #test(firebase 테스트 앱 전달)
+    lane :test do
+
+    end
+
+
+    #deploy
+    lane :deploy do
+
+    end
+end
