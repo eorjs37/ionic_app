@@ -9,18 +9,17 @@ platform :android do
             keystore_alias: 'appkey',
             keystore_password: 'chleorjs12@'
         )
-
-      
-
-
     end
 
 
     #test(firebase 테스트 앱 전달)
     lane :distribute do
-        sh("sh android.sh")
-
-        sh("pwd")
+        gradle( task: "clean assembleRelease",project_dir: 'platforms/android/')
+        firebase_app_distribution(
+            app: "1:1009227330529:android:53bbc7ac8f31dcc746d8a0",
+            firebase_cli_token:"1//0eIQwBqdtsCTqCgYIARAAGA4SNgF-L9IrRrOK3qbbD7f8gKim2LkmdPX6fVUQrxIuCBTW1ckxiliiqOEicZaSChK-depcYtv-CQ",
+            debug: true
+        )
 
     end
 

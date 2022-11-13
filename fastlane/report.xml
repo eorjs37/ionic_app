@@ -5,12 +5,12 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: sh android.sh" time="0.005099">
+      <testcase classname="fastlane.lanes" name="0: clean assembleRelease" time="14.099833">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: pwd" time="0.004079">
+      <testcase classname="fastlane.lanes" name="1: firebase_app_distribution" time="13.942187">
         
       </testcase>
     
