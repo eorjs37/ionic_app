@@ -45,9 +45,6 @@ function localStorageSyncReducer(
 }
 const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
-//fcm
-import { FCM } from '@awesome-cordova-plugins/fcm/ngx';
-
 //fontawesome
 import {
   FontAwesomeModule,
@@ -93,7 +90,6 @@ import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
     StreamingMedia,
     httpInterceptorProviders,
     Deploy,
-    FCM,
   ],
   bootstrap: [AppComponent],
 })

@@ -14,6 +14,13 @@ platform :android do
 
     #test(firebase 테스트 앱 전달)
     lane :distribute do
+        ionic(
+            platform: 'android',
+            keystore_path: "./appkey.jks",
+            keystore_alias: 'appkey',
+            keystore_password: 'chleorjs12@'
+        )
+
         gradle( task: "clean assembleRelease",project_dir: 'platforms/android/')
         firebase_app_distribution(
             app: "1:1009227330529:android:53bbc7ac8f31dcc746d8a0",
