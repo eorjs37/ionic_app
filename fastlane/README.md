@@ -41,6 +41,19 @@ Deploy android
 
 ----
 
+
+## iOS
+
+### ios dev
+
+```sh
+[bundle exec] fastlane ios dev
+```
+
+Deploy ios
+
+----
+
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
 
 More information about _fastlane_ can be found on [fastlane.tools](https://fastlane.tools).

@@ -36,3 +36,23 @@ platform :android do
 
     end
 end
+
+platform :ios do
+    desc "Deploy ios"
+
+
+    lane :dev do
+        ionic(
+            platform: 'ios',
+            release: false,
+            type: 'development',
+            team_id: 'Q5GY55X8NG'
+        )
+    end
+
+    lane :beta do
+        cert
+        sigh(force: true)
+
+    end
+end
