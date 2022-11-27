@@ -51,8 +51,9 @@ platform :ios do
     end
 
     lane :beta do
-        cert
-        sigh(force: true)
-
+        increment_build_number(build_number:1.2,xcodeproj:"./platforms/ios/신나는앱.xcodeproj")
+        build_app(workspace:"./platforms/ios/신나는앱.xcworkspace")
+        pilot( api_key_path: "./fastlane/fastlaneios.json" )
+        upload_to_testflight
     end
 end
