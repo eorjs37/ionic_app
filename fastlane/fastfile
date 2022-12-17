@@ -1,13 +1,12 @@
+
 platform :android do
     desc "Deploy android"
 
     def get_version_code()
+        edited_lines = []
         path = '../config.xml'
 
-        s = File.read(path)
-        print(s)
-
-        print("안녕")
+        print(path)
     end
 
     #python
