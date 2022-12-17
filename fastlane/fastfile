@@ -1,6 +1,62 @@
 platform :android do
     desc "Deploy android"
 
+    def increment_version_number(bump_type: nil, version_number: nil)
+        path = '../platforms/android/app/build.gradle'
+        re = /versionName\s+("\d+.\d+.\d+")/
+        s = File.read(path)
+        versionName = s[re, 1].gsub!('"','').split('.')
+    
+        major = versionName[0].to_i
+        minor = versionName[1].to_i
+        patch = versionName[2].to_i
+    
+        if (bump_type == 'major')
+            major += 1
+            minor = 0
+            patch = 0
+        elsif (bump_type == 'minor')
+            minor += 1
+            patch = 0
+        elsif (bump_type == 'patch')
+            patch += 1
+        end
+    
+        if(version_number)
+          s[re, 1] = "\"#{version_number}\""
+        else
+          s[re, 1] = "\"#{major}.#{minor}.#{patch}\""
+        end
+    
+        f = File.new(path, 'w')
+        f.write(s)
+        f.close
+        increment_version_code()
+      end
+    
+    def updateVersion(options)
+        if options[:version]
+          version = options[:version]
+        else
+          version = prompt(text: "Enter the version type or specific version\n(major, minor, patch or 1.0.0): ")
+        end
+    
+        re = /\d+.\d+.\d+/
+        versionNum = version[re, 0]
+    
+        if (versionNum)
+          increment_version_number(
+            version_number: versionNum
+          )
+        elsif (version == 'major' || version == 'minor' || version == 'patch')
+          increment_version_number(
+            bump_type: version
+          )
+        else
+          UI.user_error!("[ERROR] Wrong version!!!!!!")
+        end
+    end
+
     #build
     lane :build do
         ionic(
@@ -10,6 +66,7 @@ platform :android do
             keystore_password: 'chleorjs12@'
         )
     end
+
 
 
     #test(firebase 테스트 앱 전달)
@@ -27,12 +84,12 @@ platform :android do
             firebase_cli_token:"1//0eIQwBqdtsCTqCgYIARAAGA4SNgF-L9IrRrOK3qbbD7f8gKim2LkmdPX6fVUQrxIuCBTW1ckxiliiqOEicZaSChK-depcYtv-CQ",
             debug: true
         )
-
     end
 
 
+
     #deploy
-    lane :deploy do
+    lane :deploy do 
 
     end
 end
@@ -51,6 +108,13 @@ platform :ios do
     end
 
     lane :beta do
+        ionic(
+            platform: 'ios',
+            release: false,
+            type: 'development',
+            team_id: 'Q5GY55X8NG'
+        )
+        
         increment_build_number(build_number:1.2,xcodeproj:"./platforms/ios/신나는앱.xcodeproj")
         build_app(workspace:"./platforms/ios/신나는앱.xcworkspace")
         pilot( api_key_path: "./fastlane/fastlaneios.json" )
