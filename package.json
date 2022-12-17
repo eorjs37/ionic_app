@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "~12.1.1",
     "@angular/router": "~12.1.1",
     "@awesome-cordova-plugins/core": "^5.37.1",
+    "@awesome-cordova-plugins/fcm": "^6.2.0",
     "@awesome-cordova-plugins/file": "^5.37.2",
     "@awesome-cordova-plugins/media": "^5.37.3",
     "@awesome-cordova-plugins/media-capture": "^5.37.2",
@@ -85,6 +86,7 @@
     "com-sarriaroman-photoviewer": "^1.2.5",
     "cordova-android": "10.1.2",
     "cordova-ios": "^6.2.0",
+    "cordova-plugin-fcm-with-dependecy-updated": "^7.8.0",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-ionic": "^5.5.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
@@ -154,6 +156,14 @@
         "MAX_STORE": "2",
         "MIN_BACKGROUND_DURATION": "30",
         "UPDATE_API": "https://api.ionicjs.com"
+      },
+      "cordova-plugin-fcm-with-dependecy-updated": {
+        "ANDROID_DEFAULT_NOTIFICATION_ICON": "@mipmap/ic_launcher",
+        "ANDROID_FCM_VERSION": "21.0.0",
+        "ANDROID_FIREBASE_BOM_VERSION": "26.0.0",
+        "ANDROID_GOOGLE_SERVICES_VERSION": "4.3.4",
+        "ANDROID_GRADLE_TOOLS_VERSION": "4.1.0",
+        "IOS_FIREBASE_MESSAGING_VERSION": "~> 7.4.0"
       }
     },
     "platforms": [

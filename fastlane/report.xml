@@ -4,20 +4,5 @@
     
     
     
-      
-      <testcase classname="fastlane.lanes" name="0: ionic" time="15.081855">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="1: clean assembleRelease" time="5.595484">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="2: firebase_app_distribution" time="11.689119">
-        
-      </testcase>
-    
   </testsuite>
 </testsuites>
