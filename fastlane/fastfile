@@ -1,0 +1,5 @@
+platform :android do
+    lane :dev do
+        puts "android dev"
+    end
+end
