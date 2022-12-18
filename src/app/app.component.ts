@@ -9,6 +9,7 @@ import { setClearUserInfo } from '@/app/store/userinfo/userInfo.actions';
 import { ApiService } from '@/app/service/api.service';
 import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
 import { environment } from '@/environments/environment';
+import { PushnotificationService } from '@/app/service/pushnotification.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit {
     private alertService: AlertService,
     private router: Router,
     private apiService: ApiService,
-    private deploy: Deploy
+    private deploy: Deploy,
+    private pushNotficationServcie: PushnotificationService
   ) {
     this.platform.ready().then(async () => {
       this.apiService.getCoffAll().subscribe();
@@ -34,6 +36,9 @@ export class AppComponent implements OnInit {
         updateMethod: 'none',
         channel: environment.channel,
       });
+
+      //push notifications
+      this.pushNotficationServcie.hasAuth();
 
       const update = await this.deploy.checkForUpdate();
 

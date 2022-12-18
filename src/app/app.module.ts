@@ -17,6 +17,7 @@ import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { File } from '@awesome-cordova-plugins/file/ngx';
 import { environment } from '@/environments/environment';
+import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
 
 //store
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
@@ -90,6 +91,7 @@ import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
     StreamingMedia,
     httpInterceptorProviders,
     Deploy,
+    FCM,
   ],
   bootstrap: [AppComponent],
 })
