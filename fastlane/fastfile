@@ -2,16 +2,39 @@
 platform :android do
     desc "Deploy android"
 
-    def get_version_code()
-        edited_lines = []
+    def up_build_version()
         path = '../config.xml'
+        re =  /\d+.\d+.\d+/
 
-        print(path)
+
+        s = File.read(path)
+        versionName = s[re,0].to_s
+        puts versionName
+
+        versionArr = versionName.split('.')
+
+        major = versionArr[0].to_i
+        minor = versionArr[1].to_i
+        patch = versionArr[2].to_i + 1
+
+        puts versionArr[0].to_i
+        puts versionArr[1].to_i
+        puts versionArr[2].to_i + 1
+
+        version = "#{major}.#{minor}.#{patch}".to_s
+
+
+        s[re, 0] = version
+
+        f = File.new(path, 'w')
+        f.write(s)
+        f.close
+        
     end
 
     #python
-    lane :py do
-        get_version_code
+    lane :version do
+        up_build_version
     end    
 
 
@@ -29,6 +52,8 @@ platform :android do
 
     #test(firebase 테스트 앱 전달)
     lane :distribute do
+        up_build_version
+        
         ionic(
             platform: 'android',
             keystore_path: "./appkey.jks",

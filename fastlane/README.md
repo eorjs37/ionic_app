@@ -15,10 +15,10 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## Android
 
-### android py
+### android version
 
 ```sh
-[bundle exec] fastlane android py
+[bundle exec] fastlane android version
 ```
 
 Deploy android
