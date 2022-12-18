@@ -1,5 +1,60 @@
 platform :android do
-    lane :dev do
-        puts "android dev"
+
+    #android build number up
+    def up_build_version
+        path = '../config.xml'
+        re =  /\d+.\d+.\d+/
+
+
+        s = File.read(path)
+        versionName = s[re,0].to_s
+        puts versionName
+
+        versionArr = versionName.split('.')
+
+        major = versionArr[0].to_i
+        minor = versionArr[1].to_i
+        patch = versionArr[2].to_i + 1
+
+        puts versionArr[0].to_i
+        puts versionArr[1].to_i
+        puts versionArr[2].to_i + 1
+
+        version = "#{major}.#{minor}.#{patch}".to_s
+
+
+        s[re, 0] = version
+
+        f = File.new(path, 'w')
+        f.write(s)
+        f.close
+    end    
+
+    lane :relaease do
+        ionic(
+            platform: 'android',
+            keystore_path: "./appkey.jks",
+            keystore_alias: 'appkey',
+            keystore_password: 'chleorjs12@'
+        )
+    end
+
+    desc "test app deploy"
+    lane :distribute do
+        up_build_version
+        ionic(
+            platform: 'android',
+            keystore_path: "./appkey.jks",
+            keystore_alias: 'appkey',
+            keystore_password: 'chleorjs12@'
+        )
+        #gradle clean
+        gradle( task: "clean assembleRelease",project_dir: 'platforms/android/')
+
+        firebase_app_distribution(
+            app: "1:1009227330529:android:53bbc7ac8f31dcc746d8a0", #firebase에서 앱ID
+            firebase_cli_token:"1//0eIQwBqdtsCTqCgYIARAAGA4SNgF-L9IrRrOK3qbbD7f8gKim2LkmdPX6fVUQrxIuCBTW1ckxiliiqOEicZaSChK-depcYtv-CQ", #발급받은 토큰
+            debug: true
+        )
     end
 end

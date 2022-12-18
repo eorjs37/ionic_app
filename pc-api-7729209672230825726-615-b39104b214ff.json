@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pc-api-7729209672230825726-615",
+  "private_key_id": "b39104b214ffe327b1e81d0e594ea40000a41508",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC+AyzaXGKF3rce\n4yRgbgp/pXy57sn4zSQsC5z6s7D+2lujSoME4GvGd/f1vEgkl4DHgoYOq7SSwomL\nlPPOl/TptZLIn/Exjd9MxgRgwVbtsExQbgQJ4VW5QDBF1ae+0e2fz05GPepj74G3\n2GPsbXW+ppiiFt75efJD32iznIUIb5bJomXauRo4f6UBy5d4IgJRlkIcnPfb8ZhD\nqBxVPB56jAD9kkss6a1qzGpvsJyCq6lyYwFxXzS6ng0xnFBL96tHcNLWG9bHIkuR\njaeEAkDBwKodviJ4bjpvW6ngvzSEbyi1h1cJLYkZGoDU9R4azhJjMMprTI2RGSj1\nC9qunzytAgMBAAECggEAFFDEl+guxH9mds/0ULcTOkiYSEzmnUpZprfrJcbWkrkH\n+TJ7Rac0/rhO86AY2oi0RSCIcsMbAGH6UMkxNBJ9Jgu60OaA5Dp1+IBncWzafXlO\n/35zwhaskqzxPFY2pClPzblddhcim2K9LMnfDSU65JJtWU82sde+9lDJogKHGrqc\nF7F9gSmh0V2FU4d3jHmeQHBYFOCUcJMDKwvvZoeOQ6H2CfTDDDdjRuuQktWdU7kl\n4a19Nl90yQxN9UA/x2FLghe0TjyAX34w8Zc8Dyk90VHj7Z4fm9KSW+1l36gqFhbE\n29aRB1hjReQ5GnF3x8FnsCQMaDWwfGzrNgDYO5xfwQKBgQD4OK9kgWvaCpQ92yBv\n7Cc2A4iBZcvDXpBjWLmk81N0qA0HicEwxKuB7k2yaeOXIvK6k9Z0EoNrVQ/QcSAA\nnii6PNjbJyzgysDIhXyh98aQ0rVZroZX5UU5e04HFKq0kDp510LkGnRPkGM/egFb\nVMq3nVMK8as0ClpI3dD1mmWP8QKBgQDD94SW73SGw89RoVLiIfMGr4HOHUX+2dVA\nPcnznuMeGx5/bcu7fYbbNTigesdaKLhTkNzAFgUjb9GSJnJowWNsZ9KqHzZT6tLT\nwrwEjADB2hV2OsB/IdvfNqDzrvXbPtC5u8NNj3+WLSQqfyMsyiKArRrsg2GuNcT9\nbl0ekXs0fQKBgCZGx3UeJ/11iCqJsdTQe7NulAwwIF2+JVHMisQO6Z2hlHDHI01b\n5n6gusZ6YagasYdn6Lf5at6QPWINL7wop2sgmugggGEhotzJCNEJHkuS0nhD21+O\ncUBN7VhWLYSugPXs5dm64piqUUOmkrL8vk3WKsoTPi1GM2ntGp3k8yhhAoGAPuwT\n267pWHg48jn9dfR2pxflcvv9RJZHHch5Nss2m60TftEPUJU+ntYY55ZkujNG9DYY\nW2j2n2lA/k9v/ujRdrZjcxJwjENjDHGDk2YsvBG9QGge9PM3ORW+WmA8OviRZoG+\ndQH1co/uA+MstS32JCDw+y44SAqlxMYSCkWmLLUCgYEAkQBbHJIqEYk1Dhex6QsJ\nmS1mTcnrxxnCojRKYypoqdPsKVByQoVE7LbsVx29/oKbUm4cEXAufFbLxyO7YJUZ\n+KwziJteBAE6lOyzSRETKDOduqLoNKqtowdkzSCiHzgjO6jHKOfAxVmNJ3qVsqI2\njr9M2GZcKB3aWKCweI9eCpA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "maxgunapp@pc-api-7729209672230825726-615.iam.gserviceaccount.com",
+  "client_id": "114697651792857396500",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/maxgunapp%40pc-api-7729209672230825726-615.iam.gserviceaccount.com"
+}
