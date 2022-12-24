@@ -39,6 +39,8 @@ export class AppComponent implements OnInit {
 
       //push notifications
       this.pushNotficationServcie.hasAuth();
+      this.pushNotficationServcie.getAuth();
+      this.pushNotficationServcie.onNotifications();
 
       const update = await this.deploy.checkForUpdate();
 

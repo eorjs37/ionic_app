@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
-
+import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
 @Injectable({
   providedIn: 'root',
 })
 export class PushnotificationService {
-  constructor(private fcm: FCM) {}
+  constructor(
+    private fcm: FCM,
+    private localNotifications: LocalNotifications
+  ) {}
 
   /**
    * @description : getToken
@@ -32,6 +35,22 @@ export class PushnotificationService {
       } else {
         this.getToken();
       }
+    });
+  }
+
+  /**
+   * @description : localNotification
+   */
+  onNotifications() {
+    this.fcm.onNotification().subscribe((data) => {
+      this.localNoti(data);
+    });
+  }
+
+  localNoti(data) {
+    this.localNotifications.schedule({
+      text: data.text,
+      trigger: { at: new Date(new Date().getTime() + 1000) },
     });
   }
 
